@@ -18,7 +18,7 @@ To use the Task Completion Calculator, simply download the project files and ope
 4. The completion score will be displayed as a percentage below the button.
 
 ## Screenshots
-![Screenshot]()
+![Screenshot](ss.PNG)
 
 ## Technologies Used
 - HTML
