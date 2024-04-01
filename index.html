@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Completion Calculator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            color: #555;
+        }
+
+        .btn-primary {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.1);
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Eat that Frog 🐸</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="categoryACompleted">Class A Frog eaten:</label>
+                    <input type="number" id="categoryACompleted" class="form-control" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="categoryBCompleted">Class B Frog eaten:</label>
+                    <input type="number" id="categoryBCompleted" class="form-control" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="categoryCCompleted">Class C Frog eaten:</label>
+                    <input type="number" id="categoryCCompleted" class="form-control" min="0" value="0">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="categoryATotal">Total class A Frogs:</label>
+                    <input type="number" id="categoryATotal" class="form-control" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="categoryBTotal">Total class B Frogs:</label>
+                    <input type="number" id="categoryBTotal" class="form-control" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="categoryCTotal">Total class C Frogs:</label>
+                    <input type="number" id="categoryCTotal" class="form-control" min="0" value="0">
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button onclick="calculatePercentage()" class="btn btn-success">Get Score</button>
+        </div>
+        <p id="result" class="text-center"></p>
+    </div>
+
+    <script>
+        function calculatePercentage() {
+            const tasksCompleted = {
+                'A': parseInt(document.getElementById('categoryACompleted').value),
+                'B': parseInt(document.getElementById('categoryBCompleted').value),
+                'C': parseInt(document.getElementById('categoryCCompleted').value)
+            };
+            const totalTasks = {
+                'A': parseInt(document.getElementById('categoryATotal').value),
+                'B': parseInt(document.getElementById('categoryBTotal').value),
+                'C': parseInt(document.getElementById('categoryCTotal').value)
+            };
+
+            const weights = { 'A': 3, 'B': 2, 'C': 1 };
+            let totalScore = 0;
+            let totalPossibleScore = 0;
+
+            for (const category in tasksCompleted) {
+                const count = tasksCompleted[category];
+                totalScore += weights[category] * count;
+                totalPossibleScore += weights[category] * totalTasks[category];
+            }
+
+            const percentage = (totalScore / totalPossibleScore) * 100;
+            document.getElementById('result').textContent = `Your Score: ${percentage.toFixed(2)}%`;
+        }
+    </script>
+</body>
+
+</html>
