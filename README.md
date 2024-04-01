@@ -9,7 +9,7 @@ The Task Completion Calculator is a simple web application built using HTML, CSS
 - Users can view their completion score as a percentage.
 
 ## Installation
-To use the Task Completion Calculator, simply download the project files and open the `index.html` file in a web browser. Or go to this site [clik here](https://eatthatfrog.netlify.app/)
+To use the Task Completion Calculator, simply download the project files and open the `index.html` file in a web browser. Or go to this site [click here](https://eatthatfrog.netlify.app/) .
 
 ## Usage
 1. Input the total number of tasks for each category (Class A, Class B, and Class C) in the corresponding input fields.
