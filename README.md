@@ -1,6 +1,6 @@
 # Eat that Frog 🐸 v1.2.0
 
-Welcome to the Task Completion Calculator v1.2.0! This web application helps you track and calculate your task completion progress based on different categories of tasks.
+Welcome to the Eat that Frog 🐸 v1.2.0! This web application helps you track and calculate your task completion progress based on different categories of tasks.
 
 ## Features
 
