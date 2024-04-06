@@ -27,7 +27,7 @@ function updateDailyScores() {
         const averageScore = calculateAverageScore();
         if (!isNaN(averageScore)) {
             const averageScoreContainer = document.getElementById('averageScoreContainer');
-            averageScoreContainer.innerHTML = `Average Score of Past 7 Days: ${averageScore}%`;
+            averageScoreContainer.innerHTML = `Average Score : ${averageScore}%`;
         }
     }
 }
