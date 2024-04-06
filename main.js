@@ -24,11 +24,20 @@ function calculatePercentage() {
     const percentage = (totalScore / totalPossibleScore) * 100;
     document.getElementById('result').textContent = `Your Score: ${percentage.toFixed(2)}%`;
 
-    // Get the current date
-    const currentDate = new Date().toLocaleDateString();
+    // Get the current date in dd/mm/yyyy format
+    const currentDate = getCurrentDate();
 
     // Save the calculated score
     saveScore(currentDate, percentage.toFixed(2));
+}
+
+// Function to get the current date in dd/mm/yyyy format
+function getCurrentDate() {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const yyyy = today.getFullYear();
+    return dd + '/' + mm + '/' + yyyy;
 }
 
 // Save calculated score to local storage
@@ -55,7 +64,6 @@ function saveScore(date, score) {
     // Save the updated scores
     localStorage.setItem('scores', JSON.stringify(scores));
 }
-
 
 // Retrieve saved scores from local storage
 function getDailyScores() {
