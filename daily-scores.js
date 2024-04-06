@@ -1,6 +1,8 @@
-// Function to retrieve daily scores from local storage
+// Retrieve saved scores from local storage and sort by date in descending order
 function getDailyScores() {
-    const scores = JSON.parse(localStorage.getItem('scores')) || [];
+    let scores = JSON.parse(localStorage.getItem('scores')) || [];
+    // Sort scores by date in descending order
+    scores.sort((a, b) => new Date(b.date) - new Date(a.date));
     return scores;
 }
 
@@ -37,8 +39,8 @@ updateDailyScores();
 
 // Chart.js
 const scores = getDailyScores();
-const dates = scores.map(score => score.date);
-const scoreValues = scores.map(score => score.score);
+const dates = scores.map(score => score.date).reverse(); // Reverse the dates array
+const scoreValues = scores.map(score => score.score).reverse(); // Reverse the scoreValues array
 
 if (scores.length > 0) {
     const ctx = document.getElementById('scoreChart').getContext('2d');
