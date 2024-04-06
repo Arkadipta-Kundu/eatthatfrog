@@ -78,3 +78,27 @@ function getDailyScores() {
     const scores = JSON.parse(localStorage.getItem('scores')) || [];
     return scores;
 }
+
+// Function to retrieve saved scores from the past 7 days
+function getPastSevenDaysScores() {
+    const scores = JSON.parse(localStorage.getItem('scores')) || [];
+    const currentDate = new Date();
+    const sevenDaysAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000); // Calculate date 7 days ago
+
+    // Filter scores for the past 7 days
+    const pastSevenDaysScores = scores.filter(entry => {
+        const entryDate = new Date(entry.date);
+        return entryDate >= sevenDaysAgo && entryDate <= currentDate;
+    });
+
+    return pastSevenDaysScores;
+}
+
+// Function to calculate average score of past 7 days
+function calculateAverageScore() {
+    const pastSevenDaysScores = getPastSevenDaysScores();
+    const totalScores = pastSevenDaysScores.reduce((total, entry) => total + parseFloat(entry.score), 0);
+    const averageScore = totalScores / pastSevenDaysScores.length;
+
+    return averageScore.toFixed(2); // Return average score rounded to 2 decimal places
+}

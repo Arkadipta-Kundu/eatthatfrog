@@ -13,30 +13,32 @@
         }
 
         canvas#scoreChart {
-    max-width: 800px;
-    height: auto;
-    width: 100%;
-}
-.no-data-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 24px;
-        color: #555;
-        animation: fadeInDown 1s ease;
-    }
+            max-width: 800px;
+            height: auto;
+            width: 100%;
+        }
 
-    @keyframes fadeInDown {
-        0% {
-            opacity: 0;
-            transform: translate(-50%, -60%);
-        }
-        100% {
-            opacity: 1;
+        .no-data-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #555;
+            animation: fadeInDown 1s ease;
         }
-    }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
     </style>
 </head>
 
@@ -48,6 +50,7 @@
                 <div id="dailyScores" class="list-group"></div>
             </div>
         </div>
+        <div class="text-center mt-4" id="averageScoreContainer"></div>
         <canvas id="scoreChart"></canvas>
     </div>
 
@@ -77,6 +80,13 @@
                     scoreElement.textContent = `Date: ${score.date}, Score: ${score.score}`;
                     dailyScoresContainer.appendChild(scoreElement);
                 });
+
+                // Calculate and display average score if there is data available for the past 7 days
+                const averageScore = calculateAverageScore();
+                if (!isNaN(averageScore)) {
+                    const averageScoreContainer = document.getElementById('averageScoreContainer');
+                    averageScoreContainer.innerHTML = `Average Score of Past 7 Days: ${averageScore}%`;
+                }
             }
         }
 
@@ -124,10 +134,33 @@
             scoreChartContainer.textContent = 'No data to show';
             scoreChartContainer.classList.add('no-data-text');
         }
+
+        // Function to calculate average score of past 7 days
+        function calculateAverageScore() {
+            const pastSevenDaysScores = getPastSevenDaysScores();
+            if (pastSevenDaysScores.length === 0) return NaN; // Return NaN if there are no scores for the past 7 days
+
+            const totalScores = pastSevenDaysScores.reduce((total, entry) => total + parseFloat(entry.score), 0);
+            const averageScore = totalScores / pastSevenDaysScores.length;
+
+            return averageScore.toFixed(2); // Return average score rounded to 2 decimal places
+        }
+
+        // Function to retrieve saved scores from the past 7 days
+        function getPastSevenDaysScores() {
+            const scores = JSON.parse(localStorage.getItem('scores')) || [];
+            const currentDate = new Date();
+            const sevenDaysAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000); // Calculate date 7 days ago
+
+            // Filter scores for the past 7 days
+            const pastSevenDaysScores = scores.filter(entry => {
+                const entryDate = new Date(entry.date);
+                return entryDate >= sevenDaysAgo && entryDate <= currentDate;
+            });
+
+            return pastSevenDaysScores;
+        }
     </script>
-
-
-    
 </body>
 
 </html>
