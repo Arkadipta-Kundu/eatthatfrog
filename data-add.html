@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Daily Score</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .form-wrapper {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-message {
+            display: none;
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 10px;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-wrapper">
+                    <h1 class="text-center mb-4">Add Daily Score</h1>
+                    <form id="addScoreForm">
+                        <div class="form-group">
+                            <label for="dateInput">Date</label>
+                            <input type="date" class="form-control" id="dateInput" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="scoreInput">Score</label>
+                            <input type="number" class="form-control" id="scoreInput" min="0" step="0.01" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                    <div class="success-message text-center mt-3" id="successMessage">Data added successfully.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data-add.js"></script>
+</body>
+<footer class="text-center mt-5">
+    <p>Made with <span style="color: #ff3860;">❤</span> by GLiTch in India</p>
+    <p>&copy; 2024 GLiTch. All rights reserved.</p>
+</footer>
+
+</html>
