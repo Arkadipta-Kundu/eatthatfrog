@@ -19,7 +19,7 @@ document.getElementById('addScoreForm').addEventListener('submit', function (eve
     }
 
     // Save data to local storage
-    saveScore(date, score);
+    saveScore(formatDate(date), score);
 
     // Show success message
     const successMessage = document.getElementById('successMessage');
@@ -49,4 +49,10 @@ function saveScore(date, score) {
     }
 
     localStorage.setItem('scores', JSON.stringify(scores));
+}
+
+// Function to format date as dd/mm/yyyy
+function formatDate(dateString) {
+    const parts = dateString.split('-');
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
 }
