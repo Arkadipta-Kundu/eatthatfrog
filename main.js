@@ -1,18 +1,3 @@
-// Function to check if it's a new month
-function isNewMonth() {
-    const currentDate = new Date();
-    const storedMonth = localStorage.getItem('currentMonth');
-    const currentMonth = currentDate.getMonth() + 1; // Adding 1 because getMonth() returns zero-based index
-
-    if (!storedMonth || parseInt(storedMonth) !== currentMonth) {
-        // Update the stored month
-        localStorage.setItem('currentMonth', currentMonth);
-        return true; // It's a new month
-    }
-
-    return false; // It's not a new month
-}
-
 // Function to calculate percentage and save score
 function calculatePercentage() {
     const tasksCompleted = {
@@ -54,22 +39,21 @@ function saveScore(date, score) {
         return; // Exit the function if the score is invalid
     }
 
-    // Check if it's a new month
-    if (isNewMonth()) {
-        // Reset local storage data
-        localStorage.removeItem('scores');
-    }
-
     const scores = JSON.parse(localStorage.getItem('scores')) || [];
 
-    // Remove any previous scores for the same day
-    const updatedScores = scores.filter(entry => entry.date !== date);
+    // Check if a score already exists for the current date
+    const existingScoreIndex = scores.findIndex(entry => entry.date === date);
 
-    // Add the latest score
-    updatedScores.push({ date, score });
+    if (existingScoreIndex !== -1) {
+        // Update the existing score
+        scores[existingScoreIndex].score = score;
+    } else {
+        // Add the new score
+        scores.push({ date, score });
+    }
 
     // Save the updated scores
-    localStorage.setItem('scores', JSON.stringify(updatedScores));
+    localStorage.setItem('scores', JSON.stringify(scores));
 }
 
 

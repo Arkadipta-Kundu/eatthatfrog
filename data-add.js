@@ -36,6 +36,17 @@ document.getElementById('addScoreForm').addEventListener('submit', function (eve
 // Function to save score to local storage
 function saveScore(date, score) {
     const scores = JSON.parse(localStorage.getItem('scores')) || [];
-    scores.push({ date, score });
+
+    // Check if a score already exists for the current date
+    const existingScoreIndex = scores.findIndex(entry => entry.date === date);
+
+    if (existingScoreIndex !== -1) {
+        // Update the existing score
+        scores[existingScoreIndex].score = score;
+    } else {
+        // Add the new score
+        scores.push({ date, score });
+    }
+
     localStorage.setItem('scores', JSON.stringify(scores));
 }
