@@ -12,6 +12,15 @@
             margin-top: 20px;
         }
 
+        /* Custom CSS to center the button */
+        #resetDataButton {
+            position: relative;
+            margin-top: 50px;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         canvas#scoreChart {
             max-width: 1920px;
             height: auto;
@@ -27,6 +36,7 @@
             color: #555;
             animation: fadeInDown 1s ease;
         }
+
         .add-manually {
             position: fixed;
             top: 20px;
@@ -60,6 +70,7 @@
         <div class="add-manually">
             <a href="data-add.html" class="btn btn-secondary">Missing Score?</a>
         </div>
+        <button id="resetDataButton" class="btn btn-danger">Reset</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>

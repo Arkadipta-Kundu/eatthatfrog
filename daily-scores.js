@@ -104,3 +104,39 @@ function getPastSevenDaysScores() {
 
     return pastSevenDaysScores;
 }
+
+// Add event listener to the reset data button
+document.getElementById('resetDataButton').addEventListener('click', function () {
+    // Clear local storage
+    localStorage.removeItem('scores');
+
+    // Optional: Notify the user that data has been reset
+    alert('Data has been reset successfully.');
+});
+
+// Function to check if data is present in local storage
+function isDataPresent() {
+    const scores = JSON.parse(localStorage.getItem('scores')) || [];
+    return scores.length > 0;
+}
+
+// Function to toggle reset button visibility
+function toggleResetButton() {
+    const resetButton = document.getElementById('resetDataButton');
+    if (isDataPresent()) {
+        resetButton.style.display = 'block';
+    } else {
+        resetButton.style.display = 'none';
+    }
+}
+
+// Add an event listener to the window load event to check for data presence and toggle button visibility
+window.addEventListener('load', function () {
+    toggleResetButton();
+});
+
+// Add an event listener to the reset button to clear local storage
+document.getElementById('resetDataButton').addEventListener('click', function () {
+    localStorage.removeItem('scores');
+    toggleResetButton(); // Update button visibility after clearing data
+});
