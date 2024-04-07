@@ -199,7 +199,7 @@ function updateAverageScore() {
     const averageScoreElement = document.getElementById('averageScore');
 
     if (!isNaN(average)) {
-        averageScoreElement.textContent = `Overall Average: ${average}%`;
+        averageScoreElement.textContent = `Overall Average: ${average}`;
     } else {
         averageScoreElement.textContent = 'No scores found in local storage.';
     }
@@ -244,7 +244,7 @@ const { pastSevenDays, averageScore } = fetchPastSevenDaysScores();
 // Display the average score on your site
 const averageScoreContainer = document.getElementById('average7Score');
 if (averageScore !== 'No data available') {
-    averageScoreContainer.textContent = ` Last 7 Days Average: ${averageScore}%`;
+    averageScoreContainer.textContent = ` Last 7 Days Average: ${averageScore}`;
 } else {
     averageScoreContainer.textContent = `No data available for the past 7 days.`;
 }
