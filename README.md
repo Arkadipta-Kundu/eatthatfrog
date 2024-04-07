@@ -11,6 +11,7 @@ Welcome to the Eat that Frog 🐸 v1.2.2! This web application helps you track a
  - **Responsive Design**: Built with Bootstrap, the application boasts a responsive and mobile-friendly layout. Whether accessed from a desktop, tablet, or smartphone, users can enjoy a seamless and optimized experience across various devices.
 - **Graphical Representation**: Visualize daily scores with a line chart using Chart.js integration. This graphical representation enhances data comprehension by illustrating trends and patterns in task completion over time, empowering users to make informed decisions and adjustments.
 - **Navigation Bar**: Insted of pressing back button , user can navigate in the site with navigation buttons.
+- **Slider Menu**: Now it is more suitabe for mobile devices for added slider menu.
   
 ![Alt Text](daily-scores.PNG)
 
