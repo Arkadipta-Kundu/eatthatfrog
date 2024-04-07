@@ -94,3 +94,8 @@ function calculateAverageScore() {
 
     return averageScore.toFixed(2); // Return average score rounded to 2 decimal places
 }
+
+// JavaScript for side slider menu
+document.querySelector('.navbar-toggler').addEventListener('click', function () {
+    document.querySelector('.navbar-collapse').classList.toggle('show');
+});

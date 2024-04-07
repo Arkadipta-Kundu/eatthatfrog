@@ -169,3 +169,8 @@ document.getElementById('resetDataButton').addEventListener('click', function ()
     localStorage.removeItem('scores');
     toggleResetButton(); // Update button visibility after clearing data
 });
+
+// JavaScript for side slider menu
+document.querySelector('.navbar-toggler').addEventListener('click', function () {
+    document.querySelector('.navbar-collapse').classList.toggle('show');
+});

@@ -56,3 +56,8 @@ function formatDate(dateString) {
     const parts = dateString.split('-');
     return `${parts[2]}/${parts[1]}/${parts[0]}`;
 }
+
+// JavaScript for side slider menu
+document.querySelector('.navbar-toggler').addEventListener('click', function () {
+    document.querySelector('.navbar-collapse').classList.toggle('show');
+});

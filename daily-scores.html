@@ -8,6 +8,16 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Custom styles */
+        body {
+            background-color: #f0f0f0;
+            /* Set background color for the body and navbar */
+        }
+
+        .container {
+            padding-top: 60px;
+            /* Adjust this value as needed */
+        }
+
         #dailyScores {
             margin-top: 20px;
         }
@@ -22,9 +32,12 @@
         }
 
         canvas#scoreChart {
-            max-width: 1920px;
-            height: auto;
             width: 100%;
+            max-width: 800px;
+            /* Adjust max-width as needed */
+            height: auto;
+            margin: 0 auto;
+            display: block;
         }
 
         .no-data-text {
@@ -35,12 +48,6 @@
             font-size: 24px;
             color: #555;
             animation: fadeInDown 1s ease;
-        }
-
-        .add-manually {
-            position: fixed;
-            top: 20px;
-            left: 20px;
         }
 
         @keyframes fadeInDown {
@@ -54,12 +61,55 @@
                 transform: translate(-50%, -50%);
             }
         }
+
+        /* Custom CSS for navbar */
+        .navbar {
+            margin-top: 0;
+            border-radius: 0;
+        }
+
+        .navbar-brand {
+            font-size: 40px;
+            /* Increase brand name font size */
+            font-weight: bold;
+            /* Make brand name bold */
+        }
+
+        /* Active link styling */
+        .navbar-nav .nav-link.active {
+            font-weight: bold;
+            font-size: 21px;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f0f0f0;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Eat that Frog 🐸</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="daily-scores.html">Stats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data-add.html">Missing Score ?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1 class="text-center mb-4">Daily Scores</h1>
+        <!-- <h1 class="text-center mb-4">Daily Scores</h1> -->
         <canvas id="scoreChart"></canvas>
         <div class="text-center mt-4" id="averageScoreContainer"></div>
         <div class="row">
@@ -67,15 +117,21 @@
                 <div id="dailyScores" class="list-group"></div>
             </div>
         </div>
-        <div class="add-manually">
+        <!-- <div class="add-manually">
             <a href="data-add.html" class="btn btn-secondary">Missing Score?</a>
-        </div>
+        </div> -->
         <button id="resetDataButton" class="btn btn-danger">Reset</button>
     </div>
 
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="daily-scores.js"></script>
 </body>
+
 <footer class="text-center mt-5">
     <p>Made with <span style="color: #ff3860;">❤</span> by GLiTch in India</p>
     <p>&copy; 2024 GLiTch. All rights reserved.</p>

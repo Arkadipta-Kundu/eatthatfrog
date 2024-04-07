@@ -50,19 +50,55 @@
             color: #555;
         }
 
-        /* Media query for mobile devices */
-        @media (max-width: 576px) {
-            .container {
-                margin-top: 0;
-                /* Remove margin on mobile devices */
-            }
+        /* Custom CSS for navbar */
+        .navbar {
+            margin-top: 0;
+            border-radius: 0;
+        }
+
+        .navbar-brand {
+            font-size: 40px;
+            /* Increase brand name font size */
+            font-weight: bold;
+            /* Make brand name bold */
+        }
+
+        /* Active link styling */
+        .navbar-nav .nav-link.active {
+            font-weight: bold;
+            font-size: 20px;
         }
     </style>
 </head>
 
 <body>
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f0f0f0;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Eat that Frog 🐸</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="daily-scores.html">Stats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data-add.html">Missing Score ?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
     <div class="container">
-        <h1 class="text-center mb-4">Eat that Frog 🐸</h1>
+        <!-- <h1 class="text-center mb-4">Eat that Frog 🐸</h1> -->
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -104,10 +140,6 @@
         <p>Made with <span style="color: #ff3860;">❤</span> by GLiTch in India</p>
         <p>&copy; 2024 GLiTch. All rights reserved.</p>
     </footer>
-
-    <!-- Bootstrap button at the top right corner -->
-    <a href="daily-scores.html" class="btn btn-info" style="position: fixed; top: 20px; right: 20px;">View Daily
-        Scores</a>
 
     <script src="main.js"></script>
 </body>
