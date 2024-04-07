@@ -35,6 +35,14 @@
             transform: translateX(-50%);
         }
 
+        .btn-secondary {
+            position: relative;
+            margin-top: 20px;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         canvas#scoreChart {
             width: 100%;
             max-width: 800px;
@@ -127,6 +135,8 @@
             <a href="data-add.html" class="btn btn-secondary">Missing Score?</a>
         </div> -->
         <button id="resetDataButton" class="btn btn-danger">Reset</button>
+        <button onclick="exportToExcel()" id="export" class="btn btn-secondary">Export Data</button>
+
     </div>
 
     <!-- jQuery -->
@@ -135,6 +145,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.4/xlsx.full.min.js"></script>
+
     <script src="daily-scores.js"></script>
 </body>
 

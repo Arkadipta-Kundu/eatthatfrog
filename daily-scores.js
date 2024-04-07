@@ -158,6 +158,7 @@ function toggleResetButton() {
         resetButton.style.display = 'none';
         document.getElementById('average7Score').style.display = 'none';
         document.getElementById('averageScore').style.display = 'none';
+        document.getElementById('export').style.display = 'none';
     }
 }
 
@@ -257,3 +258,43 @@ pastSevenDays.forEach(score => {
 });
 
 
+function exportToExcel() {
+    // Get your data from local storage or wherever it's stored
+    const scores = JSON.parse(localStorage.getItem('scores')) || [];
+
+    // Create a new workbook
+    const wb = XLSX.utils.book_new();
+
+    // Convert your data to a worksheet
+    const ws = XLSX.utils.json_to_sheet(scores);
+
+    // Add the worksheet to the workbook
+    XLSX.utils.book_append_sheet(wb, ws, 'Scores');
+
+    // Generate a binary string from the workbook
+    const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+
+    // Convert the binary string to a Blob
+    const blob = new Blob([s2ab(wbout)], { type: 'application/octet-stream' });
+
+    // Create a download link for the Blob
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'scores.xlsx';
+    document.body.appendChild(a);
+
+    // Trigger a click event on the download link
+    a.click();
+
+    // Remove the download link from the DOM
+    document.body.removeChild(a);
+}
+
+// Function to convert binary string to array buffer
+function s2ab(s) {
+    const buf = new ArrayBuffer(s.length);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
+    return buf;
+}
