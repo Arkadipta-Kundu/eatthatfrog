@@ -17,6 +17,10 @@ Welcome to the Eat that Frog 🐸 v1.2.2! This web application helps you track a
 
 - **Persistent Storage**: Daily scores are automatically saved in the browser's local storage, ensuring data persistence across sessions. This feature allows users to revisit and track their historical performance without the risk of data loss.
 -  **Data Reset**: Users have the option to reset all stored data with a simple command. By executing `localStorage.clear()` in the browser console, users can wipe all saved scores and start afresh, providing a clean slate for tracking new tasks.
+-  **Export Data**: Users now can export their data in excel.
+
+![Alt Text](r_e.png)
+
 - **Add Missing Scores**: If users forget to input a score for a specific day, they can easily rectify the omission by clicking the "Missing Score?" button. This button redirects users to a dedicated page where they can manually add missing scores for any date, ensuring comprehensive and accurate data collection.
 
 ![Alt Text](data-add.png)
