@@ -1,6 +1,6 @@
-# Eat that Frog 🐸 v1.2.1
+# Eat that Frog 🐸 v1.2.2
 
-Welcome to the Eat that Frog 🐸 v1.2.1! This web application helps you track and calculate your task completion progress based on different categories of tasks.
+Welcome to the Eat that Frog 🐸 v1.2.2! This web application helps you track and calculate your task completion progress based on different categories of tasks.
 
 ![Alt Text](index.PNG)
 
@@ -10,6 +10,7 @@ Welcome to the Eat that Frog 🐸 v1.2.1! This web application helps you track a
 - **Advanced Calculation**: The application performs advanced calculations to determine the completion percentage based on weighted scores for each category of tasks. By assigning weights to different task categories, users can prioritize and gauge their progress more accurately.
  - **Responsive Design**: Built with Bootstrap, the application boasts a responsive and mobile-friendly layout. Whether accessed from a desktop, tablet, or smartphone, users can enjoy a seamless and optimized experience across various devices.
 - **Graphical Representation**: Visualize daily scores with a line chart using Chart.js integration. This graphical representation enhances data comprehension by illustrating trends and patterns in task completion over time, empowering users to make informed decisions and adjustments.
+- **Navigation Bar**: Insted of pressing back button , user can navigate in the site with navigation buttons.
   
 ![Alt Text](daily-scores.PNG)
 
