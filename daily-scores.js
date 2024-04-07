@@ -19,9 +19,29 @@ function updateDailyScores() {
         dailyScoresContainer.appendChild(noDataText);
     } else {
         dailyScores.forEach(score => {
-            const scoreElement = document.createElement('a');
-            scoreElement.classList.add('list-group-item', 'list-group-item-action');
-            scoreElement.textContent = `Date: ${score.date}, Score: ${score.score}`;
+            const scoreElement = document.createElement('div');
+            scoreElement.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'justify-content-between', 'align-items-center');
+
+            const scoreInfo = document.createElement('span');
+            scoreInfo.textContent = `Date: ${score.date}, Score: ${score.score}`;
+            scoreElement.appendChild(scoreInfo);
+
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('btn', 'btn-sm', 'btn-danger', 'delete-button');
+            deleteButton.textContent = '❌';
+            deleteButton.style.display = 'none';
+            deleteButton.addEventListener('click', function () {
+                deleteScore(score.date);
+            });
+            scoreElement.appendChild(deleteButton);
+
+            scoreElement.addEventListener('mouseover', function () {
+                deleteButton.style.display = 'inline-block';
+            });
+            scoreElement.addEventListener('mouseout', function () {
+                deleteButton.style.display = 'none';
+            });
+
             dailyScoresContainer.appendChild(scoreElement);
         });
 
@@ -33,6 +53,15 @@ function updateDailyScores() {
         }
     }
 }
+
+// Function to delete a score by date
+function deleteScore(date) {
+    let scores = JSON.parse(localStorage.getItem('scores')) || [];
+    scores = scores.filter(score => score.date !== date);
+    localStorage.setItem('scores', JSON.stringify(scores));
+    updateDailyScores();
+}
+
 
 // Call updateDailyScores function to display daily scores when page loads
 updateDailyScores();
