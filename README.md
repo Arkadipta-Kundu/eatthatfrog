@@ -45,13 +45,13 @@ Welcome to Eat that Frog 🐸 v1.2.4! This web application is designed to help y
 1. Clone the repository to your local machine:
 
    ```
-   git clone https://github.com/yourusername/task-completion-calculator.git
+   git clone https://github.com/glitch7584/eatthatfrog.git
    ```
 
 2. Navigate to the project directory:
 
    ```
-   cd task-completion-calculator
+   cd eatthatfrog
    ```
 
 3. Open `index.html` in your web browser to access the application.
