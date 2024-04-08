@@ -35,7 +35,13 @@ function calculatePercentage() {
 }
 
 // Function to save the input values as a note
-function saveInputValuesAsNote(date, tasksCompleted, totalTasks) {
+function saveInputValuesAsNote(tasksCompleted, totalTasks) {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const yyyy = today.getFullYear();
+    const currentDate = dd + '/' + mm + '/' + yyyy;
+
     const noteTitle = document.getElementById('result').textContent; // Use the calculated score as the note title
     const noteContent = `Total class A Frogs: ${totalTasks['A']}, Class A Frog eaten: ${tasksCompleted['A']}, Total class B Frogs: ${totalTasks['B']}, Class B Frog eaten: ${tasksCompleted['B']}, Total class C Frogs: ${totalTasks['C']}, Class C Frog eaten: ${tasksCompleted['C']}`;
 
@@ -43,7 +49,7 @@ function saveInputValuesAsNote(date, tasksCompleted, totalTasks) {
     let savedNotes = JSON.parse(localStorage.getItem('notes')) || [];
 
     // Check if a note already exists for the current date
-    const existingNoteIndex = savedNotes.findIndex(note => note.date === date);
+    const existingNoteIndex = savedNotes.findIndex(note => note.date === currentDate);
 
     if (existingNoteIndex !== -1) {
         // If a note already exists for the current date, update its content
@@ -51,7 +57,7 @@ function saveInputValuesAsNote(date, tasksCompleted, totalTasks) {
         savedNotes[existingNoteIndex].content = noteContent;
     } else {
         // If no note exists for the current date, add a new note
-        const newNote = { title: noteTitle, content: noteContent, date };
+        const newNote = { title: noteTitle, content: noteContent, date: currentDate };
         savedNotes.push(newNote);
     }
 
@@ -61,9 +67,6 @@ function saveInputValuesAsNote(date, tasksCompleted, totalTasks) {
     // Reload notes
     loadNotes();
 }
-
-
-
 // Function to get the current date in dd/mm/yyyy format
 function getCurrentDate() {
     const today = new Date();
