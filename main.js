@@ -29,7 +29,40 @@ function calculatePercentage() {
 
     // Save the calculated score
     saveScore(currentDate, percentage.toFixed(2));
+
+    // Save the input values as a note
+    saveInputValuesAsNote(currentDate, tasksCompleted, totalTasks);
 }
+
+// Function to save the input values as a note
+function saveInputValuesAsNote(date, tasksCompleted, totalTasks) {
+    const noteTitle = document.getElementById('result').textContent; // Use the calculated score as the note title
+    const noteContent = `Total class A Frogs: ${totalTasks['A']}, Class A Frog eaten: ${tasksCompleted['A']}, Total class B Frogs: ${totalTasks['B']}, Class B Frog eaten: ${tasksCompleted['B']}, Total class C Frogs: ${totalTasks['C']}, Class C Frog eaten: ${tasksCompleted['C']}`;
+
+    // Retrieve existing notes from local storage
+    let savedNotes = JSON.parse(localStorage.getItem('notes')) || [];
+
+    // Check if a note already exists for the current date
+    const existingNoteIndex = savedNotes.findIndex(note => note.date === date);
+
+    if (existingNoteIndex !== -1) {
+        // If a note already exists for the current date, update its content
+        savedNotes[existingNoteIndex].title = noteTitle;
+        savedNotes[existingNoteIndex].content = noteContent;
+    } else {
+        // If no note exists for the current date, add a new note
+        const newNote = { title: noteTitle, content: noteContent, date };
+        savedNotes.push(newNote);
+    }
+
+    // Save the updated notes to local storage
+    localStorage.setItem('notes', JSON.stringify(savedNotes));
+
+    // Reload notes
+    loadNotes();
+}
+
+
 
 // Function to get the current date in dd/mm/yyyy format
 function getCurrentDate() {
