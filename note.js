@@ -36,10 +36,19 @@ function createNoteElement(note, index) {
         <p class="text-gray-600">${highlightedContent}</p>
         <p class="text-sm text-gray-400 mt-2">Date: ${formatDate(note.date)}</p>
         <button class="delete-button" onclick="deleteNote(${index})">❌</button>
+        <button class="export-button" onclick="exportNote('${note.title}', '${note.content}')">⏬</button>
     `;
     return noteElement;
 }
 
+// Function to export a note as a .doc file
+function exportNote(title, content) {
+    const blob = new Blob([content], { type: 'text/plain' });
+    const anchor = document.createElement('a');
+    anchor.download = `${title}.doc`;
+    anchor.href = window.URL.createObjectURL(blob);
+    anchor.click();
+}
 
 // Function to add a new note
 document.getElementById('noteForm').addEventListener('submit', function (event) {
