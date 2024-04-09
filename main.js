@@ -45,6 +45,9 @@ function saveInputValuesAsNote(tasksCompleted, totalTasks) {
     const noteTitle = document.getElementById('result').textContent; // Use the calculated score as the note title
     const noteContent = `Total class A Frogs: ${totalTasks['A']}, Class A Frog eaten: ${tasksCompleted['A']}, Total class B Frogs: ${totalTasks['B']}, Class B Frog eaten: ${tasksCompleted['B']}, Total class C Frogs: ${totalTasks['C']}, Class C Frog eaten: ${tasksCompleted['C']}`;
 
+    // Add date to the title in brackets
+    const titleWithDate = `${noteTitle} (Date: ${currentDate})`;
+
     // Retrieve existing notes from local storage
     let savedNotes = JSON.parse(localStorage.getItem('notes')) || [];
 
@@ -53,11 +56,11 @@ function saveInputValuesAsNote(tasksCompleted, totalTasks) {
 
     if (existingNoteIndex !== -1) {
         // If a note already exists for the current date, update its content
-        savedNotes[existingNoteIndex].title = noteTitle;
+        savedNotes[existingNoteIndex].title = titleWithDate;
         savedNotes[existingNoteIndex].content = noteContent;
     } else {
         // If no note exists for the current date, add a new note
-        const newNote = { title: noteTitle, content: noteContent, date: currentDate };
+        const newNote = { title: titleWithDate, content: noteContent, date: currentDate };
         savedNotes.push(newNote);
     }
 
