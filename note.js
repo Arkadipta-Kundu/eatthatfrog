@@ -15,12 +15,14 @@ function loadNotes() {
     notesContainer.innerHTML = '';
 
     if (savedNotes) {
-        savedNotes.forEach((note, index) => {
+        // Reverse the order of notes to display the latest ones first
+        savedNotes.reverse().forEach((note, index) => {
             const noteElement = createNoteElement(note, index);
             notesContainer.appendChild(noteElement);
         });
     }
 }
+
 
 // Function to create a note element
 function createNoteElement(note, index) {
