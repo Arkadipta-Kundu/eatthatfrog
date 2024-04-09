@@ -33,10 +33,10 @@ function createNoteElement(note, index) {
     const highlightedContent = highlightMatches(note.content);
 
     noteElement.innerHTML = `
-        <h2 class="text-lg font-medium">${highlightedTitle}</h2>
+        ${note.locked ? '' : `<h2 class="text-lg font-medium">${highlightedTitle}</h2>`}
         ${note.locked ? '' : `<p class="text-gray-600">${highlightedContent}</p>`}
         <p class="text-sm text-gray-400 mt-2">Date: ${formatDate(note.date)}</p>
-        ${note.locked ? `<div class="locked-note" data-index="${index}"><button class="unlock-button">Want to view the locked note?</button></div>` : ''}
+        ${note.locked ? `<div class="locked-note" data-index="${index}"><button class="unlock-button">Unlock 🔓</button></div>` : ''}
         <button class="delete-button" onclick="deleteNote(${index})">❌</button>
         ${!note.locked ? `<button class="export-button" onclick="exportNote('${note.title}', '${note.content}')">⏬</button>` : ''}
     `;
