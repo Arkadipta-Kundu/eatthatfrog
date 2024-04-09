@@ -23,7 +23,6 @@ function loadNotes() {
     }
 }
 
-
 // Function to create a note element
 function createNoteElement(note, index) {
     const noteElement = document.createElement('div');
@@ -35,13 +34,30 @@ function createNoteElement(note, index) {
 
     noteElement.innerHTML = `
         <h2 class="text-lg font-medium">${highlightedTitle}</h2>
-        <p class="text-gray-600">${highlightedContent}</p>
+        ${note.locked ? '' : `<p class="text-gray-600">${highlightedContent}</p>`}
         <p class="text-sm text-gray-400 mt-2">Date: ${formatDate(note.date)}</p>
+        ${note.locked ? `<div class="locked-note" data-index="${index}"><button class="unlock-button">Want to view the locked note?</button></div>` : ''}
         <button class="delete-button" onclick="deleteNote(${index})">❌</button>
-        <button class="export-button" onclick="exportNote('${note.title}', '${note.content}')">⏬</button>
+        ${!note.locked ? `<button class="export-button" onclick="exportNote('${note.title}', '${note.content}')">⏬</button>` : ''}
     `;
+
+    // Add event listener to unlock button for locked notes
+    if (note.locked) {
+        const unlockButton = noteElement.querySelector('.unlock-button');
+        unlockButton.addEventListener('click', function () {
+            const password = prompt('Enter the password to view the locked note:');
+            if (password === note.password) {
+                const lockedNote = document.querySelector(`.locked-note[data-index="${index}"]`);
+                lockedNote.innerHTML = `<p class="text-gray-600">${highlightedContent}</p>`;
+            } else {
+                alert('Incorrect password. You cannot view this locked note.');
+            }
+        });
+    }
+
     return noteElement;
 }
+
 
 // Function to export a note as a .doc file
 function exportNote(title, content) {
@@ -59,9 +75,18 @@ document.getElementById('noteForm').addEventListener('submit', function (event) 
     const title = document.getElementById('noteTitle').value;
     const content = document.getElementById('noteContent').value;
     const date = document.getElementById('noteDate').value;
+    const lockNote = document.getElementById('lockNote').checked;
+    let password = '';
+
+    // If the note is locked, prompt the user to enter a password
+    if (lockNote) {
+        password = prompt('Enter a password for the locked note:');
+        if (!password) return; // Cancelled password entry
+    }
 
     if (title && content && date) {
-        const newNote = { title, content, date };
+        // Store the note along with password and lock status
+        const newNote = { title, content, date, locked: lockNote, password };
         const savedNotes = JSON.parse(localStorage.getItem('notes')) || [];
         savedNotes.push(newNote);
         localStorage.setItem('notes', JSON.stringify(savedNotes));
@@ -71,6 +96,7 @@ document.getElementById('noteForm').addEventListener('submit', function (event) 
         document.getElementById('noteTitle').value = '';
         document.getElementById('noteContent').value = '';
         document.getElementById('noteDate').value = '';
+        document.getElementById('lockNote').checked = false;
     } else {
         alert('Please enter title, content, and date for the note.');
     }
