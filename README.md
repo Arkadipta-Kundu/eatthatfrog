@@ -1,17 +1,12 @@
-# Eat that Frog 🐸 v1.2.4
+# Eat that Frog 🐸 v1.2.5
 
-Welcome to Eat that Frog 🐸 v1.2.4! This web application is designed to help you track and calculate your task completion progress across different categories. With its user-friendly interface and advanced features, Eat that Frog 🐸 empowers you to manage your tasks efficiently and stay organized.
+Welcome to Eat that Frog 🐸 v1.2.5! This web application is designed to help you track and calculate your task completion progress across different categories. With its user-friendly interface and advanced features, Eat that Frog 🐸 empowers you to manage your tasks efficiently and stay organized.
 
 ![Alt Text](index.PNG)
 
-## New Features in v1.2.4
+## New Features in v1.2.5
 
-### Note Taking Feature
-
-- **Note Entry**: Now you can jot down your thoughts, ideas, or important information using the new note-taking feature.
-- **Date Picker**: Easily select the date for each note entry using the integrated date picker, ensuring accurate timestamping.
-- **Search and Filter**: Effortlessly search and filter through your notes based on keywords or specific dates, enhancing accessibility and retrieval.
-- **Responsive Design**: The note-taking feature is seamlessly integrated into the application's responsive design, ensuring optimal viewing and functionality across devices.
+- **Secure Note**: Users can create secure note. protected by password.
 
 ![alt text](note.png)
 
@@ -21,6 +16,10 @@ Welcome to Eat that Frog 🐸 v1.2.4! This web application is designed to help y
 - **Advanced Calculation**: The application performs advanced calculations to determine the completion percentage based on weighted scores for each category of tasks. By assigning weights to different task categories, users can prioritize and gauge their progress more accurately.
 - **Responsive Design**: Built with Bootstrap, the application boasts a responsive and mobile-friendly layout. Whether accessed from a desktop, tablet, or smartphone, users can enjoy a seamless and optimized experience across various devices.
 - **Graphical Representation**: Visualize daily scores with a line chart using Chart.js integration. This graphical representation enhances data comprehension by illustrating trends and patterns in task completion over time, empowering users to make informed decisions and adjustments.
+- - **Note Entry**: Now you can jot down your thoughts, ideas, or important information using the new note-taking feature.
+- **Date Picker**: Easily select the date for each note entry using the integrated date picker, ensuring accurate timestamping.
+- **Search and Filter**: Effortlessly search and filter through your notes based on keywords or specific dates, enhancing accessibility and retrieval.
+- **Responsive Design**: The note-taking feature is seamlessly integrated into the application's responsive design, ensuring optimal viewing and functionality across devices.
 
 ![Alt Text](daily-scores.PNG)
 
@@ -87,6 +86,9 @@ search and filter notes based on keywords or dates for quick access and referenc
 This project is licensed under the [MIT License](LICENSE).
 
 ## Version History
+
+- **v1.2.4**:
+- Added a secure note funtionality.
 
 - **v1.2.4**:
 
