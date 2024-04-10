@@ -8,6 +8,10 @@ document.querySelector('.navbar-toggler').addEventListener('click', function () 
     document.querySelector('.navbar-collapse').classList.toggle('show');
 });
 
+// Global variables for pagination
+let currentPage = 1;
+const notesPerPage = 5; // Adjust this value as needed
+
 // Function to load notes from local storage
 function loadNotes() {
     const savedNotes = JSON.parse(localStorage.getItem('notes'));
@@ -15,8 +19,12 @@ function loadNotes() {
     notesContainer.innerHTML = '';
 
     if (savedNotes) {
+        // Calculate start and end indexes based on current page and notes per page
+        const startIndex = (currentPage - 1) * notesPerPage;
+        const endIndex = startIndex + notesPerPage;
+
         // Reverse the order of notes to display the latest ones first
-        savedNotes.reverse().forEach((note, index) => {
+        savedNotes.slice().reverse().slice(startIndex, endIndex).forEach((note, index) => {
             const noteElement = createNoteElement(note, index);
             notesContainer.appendChild(noteElement);
         });
