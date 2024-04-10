@@ -154,9 +154,17 @@ function searchAndFilterNotes() {
         });
     }
 
-    if (searchDate) {
-        filteredNotes = filteredNotes.filter(note => note.date === searchDate);
+    // If search date is not provided, don't filter by date
+    if (!searchDate) {
+        displayFilteredNotes(filteredNotes);
+        return;
     }
+
+    // Filter notes by date
+    filteredNotes = filteredNotes.filter(note => {
+        // Convert both note.date and searchDate to the same format for comparison
+        return formatDate(note.date) === formatDate(searchDate);
+    });
 
     displayFilteredNotes(filteredNotes);
 }
