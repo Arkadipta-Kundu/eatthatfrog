@@ -30,7 +30,11 @@ function createNoteElement(note, index) {
 
     // Apply highlighting to title and content
     const highlightedTitle = highlightMatches(note.title);
-    const highlightedContent = highlightMatches(note.content);
+    let decodedContent = note.content;
+    if (note.locked) {
+        decodedContent = decodeContent(note.content);
+    }
+    const highlightedContent = highlightMatches(decodedContent);
 
     noteElement.innerHTML = `
         ${note.locked ? '' : `<h2 class="text-lg font-medium">${highlightedTitle}</h2>`}
@@ -58,6 +62,16 @@ function createNoteElement(note, index) {
     return noteElement;
 }
 
+// Function to encode content before saving
+function encodeContent(content) {
+    return btoa(content);
+}
+
+// Function to decode content when displaying
+function decodeContent(encodedContent) {
+    return atob(encodedContent);
+}
+
 
 // Function to export a note as a .doc file
 function exportNote(title, content) {
@@ -73,7 +87,7 @@ document.getElementById('noteForm').addEventListener('submit', function (event) 
     event.preventDefault();
 
     const title = document.getElementById('noteTitle').value;
-    const content = document.getElementById('noteContent').value;
+    let content = document.getElementById('noteContent').value;
     const date = document.getElementById('noteDate').value;
     const lockNote = document.getElementById('lockNote').checked;
     let password = '';
@@ -82,6 +96,8 @@ document.getElementById('noteForm').addEventListener('submit', function (event) 
     if (lockNote) {
         password = prompt('Enter a password for the locked note:');
         if (!password) return; // Cancelled password entry
+        // Encode content before saving
+        content = encodeContent(content);
     }
 
     if (title && content && date) {
