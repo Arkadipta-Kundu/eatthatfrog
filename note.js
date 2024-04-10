@@ -50,7 +50,9 @@ function createNoteElement(note, index) {
         const unlockButton = noteElement.querySelector('.unlock-button');
         unlockButton.addEventListener('click', function () {
             const password = prompt('Enter the password to view the locked note:');
-            if (password === note.password) {
+            // Decode the stored password before comparing
+            const decodedPassword = decodePassword(note.password);
+            if (password === decodedPassword) {
                 const lockedNote = document.querySelector(`.locked-note[data-index="${index}"]`);
                 lockedNote.innerHTML = `<p class="text-gray-600">${highlightedContent}</p>`;
             } else {
@@ -96,6 +98,8 @@ document.getElementById('noteForm').addEventListener('submit', function (event) 
     if (lockNote) {
         password = prompt('Enter a password for the locked note:');
         if (!password) return; // Cancelled password entry
+        // Encode password before saving
+        password = encodePassword(password);
         // Encode content before saving
         content = encodeContent(content);
     }
@@ -118,6 +122,15 @@ document.getElementById('noteForm').addEventListener('submit', function (event) 
     }
 });
 
+// Function to encode password before saving
+function encodePassword(password) {
+    return btoa(password);
+}
+
+// Function to decode password before comparison
+function decodePassword(encodedPassword) {
+    return atob(encodedPassword);
+}
 // Function to search and filter notes
 function searchAndFilterNotes() {
     const searchText = document.getElementById('searchText').value.toLowerCase();
