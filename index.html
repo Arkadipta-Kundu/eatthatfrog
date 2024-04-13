@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eat that Frog 🐸
-</title>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -77,9 +78,11 @@
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f0f0f0;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Eat that Frog 🐸</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler block lg:hidden focus:outline-none">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="block bg-gray-800 h-0.5 w-6 mb-1 rounded-full"></span>
+                <span class="block bg-gray-800 h-0.5 w-6 mb-1 rounded-full"></span>
+                <span class="block bg-gray-800 h-0.5 w-6 rounded-full"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
