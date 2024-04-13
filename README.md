@@ -1,10 +1,10 @@
-# Eat that Frog 🐸 v1.2.6
+# Eat that Frog 🐸 v1.6.1
 
-Welcome to Eat that Frog 🐸 v1.2.6! This web application is designed to help you track and calculate your task completion progress across different categories. With its user-friendly interface and advanced features, Eat that Frog 🐸 empowers you to manage your tasks efficiently and stay organized.
+Welcome to Eat that Frog 🐸 v1.6.1! This web application is designed to help you track and calculate your task completion progress across different categories. With its user-friendly interface and advanced features, Eat that Frog 🐸 empowers you to manage your tasks efficiently and stay organized.
 
 ![Alt Text](index.PNG)
 
-## New Features in v1.2.6
+## New Features in v1.6.1
 
 - **Secure Note**: Users can create secure note. protected by password.
 
@@ -87,31 +87,31 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Version History
 
-- **v1.2.6**:
+- **v1.6.1**:
 - Ui bug fix.
 
-- **v1.2.5**:
+- **v1.6.0**:
 - Added a secure note funtionality.
 
-- **v1.2.4**:
+- **v1.5.0**:
 
   - Added note-taking feature for capturing important information and ideas.
   - Enhanced search and filter functionality to include notes based on keywords and dates.
   - Improved user experience with responsive design and integrated date picker.
 
-- **v1.2.1**:
+- **v1.4.0**:
 
   - Updated README with version history and documentation.
   - Added new features and updated design.
   - Manually score adding.
 
-- **v1.2.0**:
+- **v1.3.0**:
 
   - Added daily score view and graph.
   - Improved data storage and reset functionality.
   - Enhanced graphical representation.
 
-- **v1.1.0**:
+- **v1.2.0**:
 
   - Added animation and aesthetic improvements.
   - Updated README and documentation.
