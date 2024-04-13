@@ -88,10 +88,10 @@ This project is licensed under the [MIT License](LICENSE).
 ## Version History
 
 - **v1.6.1**:
-- Ui bug fix.
+   - Ui bug fix.
 
 - **v1.6.0**:
-- Added a secure note funtionality.
+   - Added a secure note funtionality.
 
 - **v1.5.0**:
 
