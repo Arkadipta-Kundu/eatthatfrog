@@ -1,6 +1,6 @@
 # Eat that Frog 🐸 v1.6.1
 
-Welcome to Eat that Frog 🐸 v1.6.1! This web application is designed to help you track and calculate your task completion progress across different categories. With its user-friendly interface and advanced features, Eat that Frog 🐸 empowers you to manage your tasks efficiently and stay organized. visit now [Eat that Frog](https://eatthatfrog.netlify.app/).
+Welcome to Eat that Frog 🐸 v1.6.1! This web application is designed to help you track and calculate your task completion progress across different categories. With its user-friendly interface and advanced features, Eat that Frog 🐸 empowers you to manage your tasks efficiently and stay organized. Visit now [Eat that Frog](https://eatthatfrog.netlify.app/).
 
 ![Alt Text](index.PNG)
 
